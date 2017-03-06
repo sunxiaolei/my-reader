@@ -41,17 +41,17 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         super.onCreate(savedInstanceState);
         setContentView(setContentViewId());
         mUnbinder = ButterKnife.bind(this);
-        initView();
         initData();
+        initView();
     }
 
     protected abstract T createPresenter();
 
     protected abstract int setContentViewId();
 
-    protected abstract void initView();
-
     protected abstract void initData();
+
+    protected abstract void initView();
 
     @Override
     protected void onDestroy() {

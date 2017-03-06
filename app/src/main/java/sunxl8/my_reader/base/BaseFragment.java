@@ -32,8 +32,8 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
             mPresenter = createPresenter();
             mPresenter.attachView(this);
         }
-        initView();
         initData();
+        initView();
         return view;
     }
 
@@ -41,9 +41,9 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
 
     protected abstract int setContentViewId();
 
-    protected abstract void initView();
-
     protected abstract void initData();
+
+    protected abstract void initView();
 
     @Override
     public void onDestroyView() {
