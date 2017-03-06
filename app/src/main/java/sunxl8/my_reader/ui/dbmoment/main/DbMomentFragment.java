@@ -40,7 +40,9 @@ public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements
 
     @Override
     protected void initData() {
-        mActivity.showLoading();
+        if (isVisible) {
+            mActivity.showLoading();
+        }
         mPresenter.getColumns();
     }
 

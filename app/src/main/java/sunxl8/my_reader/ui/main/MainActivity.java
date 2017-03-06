@@ -15,10 +15,11 @@ import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseActivity;
 import sunxl8.my_reader.base.IPresenter;
 import sunxl8.my_reader.ui.dbmoment.main.DbMomentFragment;
+import sunxl8.my_reader.ui.maoyan.main.MaoyanMovieFragment;
 
 public class MainActivity extends BaseActivity {
 
-    private String[] mTitles = {"豆瓣一刻", "豆瓣电影", "猫眼电影"};
+    private String[] mTitles = {"豆瓣一刻", "猫眼电影", "..."};
 
     @BindView(R.id.tab_main)
     TabLayout mTabLayout;
@@ -40,9 +41,9 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
         mFragments = new ArrayList<>();
-        for (int i = 0; i < mTitles.length; i++) {
-            mFragments.add(new DbMomentFragment());
-        }
+        mFragments.add(new DbMomentFragment());
+        mFragments.add(new MaoyanMovieFragment());
+        mFragments.add(new DbMomentFragment());
     }
 
     @Override

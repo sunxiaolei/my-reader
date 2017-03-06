@@ -11,6 +11,7 @@ public class NetworkConstant {
     public static final int HTTP_WRITE_TIMEOUT = 5000;
     public static final int HTTP_READ_TIMEOUT = 5000;
 
-    //HOST
-    public static final String HOST_DB_MOMENT = "https://moment.douban.com/api/";
+    //HOST------------------------------------------------------------------------------------------
+    public static final String HOST_DOUBAN_MOMENT = "https://moment.douban.com/api/";
+    public static final String HOST_MAOYAN_MOVIE = "http://m.maoyan.com/";
 }

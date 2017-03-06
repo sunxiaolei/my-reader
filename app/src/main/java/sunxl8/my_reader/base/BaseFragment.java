@@ -37,6 +37,18 @@ public abstract class BaseFragment<T extends IPresenter> extends RxFragment impl
         return view;
     }
 
+    protected boolean isVisible;
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVisibleHint()) {
+            isVisible = true;
+        } else {
+            isVisible = false;
+        }
+    }
+
     protected abstract T createPresenter();
 
     protected abstract int setContentViewId();

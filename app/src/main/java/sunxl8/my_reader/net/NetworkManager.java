@@ -41,6 +41,7 @@ public class NetworkManager {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         } else if (!lastUrl.equals(baseUrl)) {
+            lastUrl = baseUrl;
             commonClient = new Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .client(getHttpClient(headers))
