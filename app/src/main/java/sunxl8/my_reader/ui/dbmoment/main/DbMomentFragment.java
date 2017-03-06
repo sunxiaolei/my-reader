@@ -40,11 +40,13 @@ public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements
 
     @Override
     protected void initData() {
+        mActivity.showLoading();
         mPresenter.getColumns();
     }
 
     @Override
     public void setColumns(ColumnsDto columns) {
+        mActivity.dismissDialog();
         List<ColumnBean> list = columns.getColumns();
         mAdapter = new DbMomentAdapter(this, list);
         Observable.from(list)
@@ -55,5 +57,7 @@ public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements
 
     @Override
     public void error(String msg) {
+        mActivity.dismissDialog();
+        mActivity.showToast(msg);
     }
 }

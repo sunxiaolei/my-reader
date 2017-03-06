@@ -35,6 +35,7 @@ public class ColumnPostActivity extends BaseActivity<ColumnPostPresenter> implem
     @Override
     protected void initData() {
         int id = getIntent().getIntExtra("id", 0);
+        showLoading();
         mPresenter.getColumnPost(id);
     }
 
@@ -51,12 +52,14 @@ public class ColumnPostActivity extends BaseActivity<ColumnPostPresenter> implem
 
     @Override
     public void setColumnPost(ColumnPostDto dto) {
+        dismissDialog();
         mAdapter = new ColumnPostAdapter(this, dto.getPosts());
         xrvColumnPost.setAdapter(mAdapter);
     }
 
     @Override
     public void error(String msg) {
-
+        dismissDialog();
+        showToast(msg);
     }
 }

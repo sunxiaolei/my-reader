@@ -1,6 +1,5 @@
 package sunxl8.my_reader.base;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
@@ -16,6 +15,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import sunxl8.my_reader.widget.LoadingDialog;
 
 
 /**
@@ -27,8 +27,8 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     protected T mPresenter;
     protected Unbinder mUnbinder;
 
-    private ProgressDialog dialogLoading;
     private AlertDialog dialog;
+    private LoadingDialog mLoadingDialog;
 
     @Override
     @CallSuper
@@ -65,10 +65,10 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     }
 
     public void showLoading() {
-        if (dialogLoading == null) {
-            dialogLoading = new ProgressDialog(this);
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(this);
         }
-        dialogLoading.show();
+        mLoadingDialog.show();
     }
 
     public void showDialog(String msg) {
@@ -93,8 +93,8 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     }
 
     public void dismissDialog() {
-        if (dialogLoading != null) {
-            dialogLoading.dismiss();
+        if (mLoadingDialog != null) {
+            mLoadingDialog.dismiss();
         }
         if (dialog != null) {
             dialog.dismiss();

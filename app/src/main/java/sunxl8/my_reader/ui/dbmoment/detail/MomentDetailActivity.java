@@ -54,12 +54,16 @@ public class MomentDetailActivity extends BaseActivity {
         mView.setMinScale(1.0F);
         mView.setMaxScale(5.0F);
 
-        Glide.with(this)
-                .load(bean.getShare_pic_url()).downloadOnly(new SimpleTarget<File>() {
+        showLoading();
+        Glide.with(this).load(bean.getShare_pic_url()).downloadOnly(new SimpleTarget<File>() {
+
             @Override
             public void onResourceReady(File resource, GlideAnimation<? super File> glideAnimation) {
+                dismissDialog();
                 mView.setImage(ImageSource.uri(Uri.fromFile(resource)), new ImageViewState(2.5F, new PointF(0, 0), 0));
             }
+
+
         });
     }
 
