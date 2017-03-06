@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layout_item_columnpost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -14,18 +15,11 @@
         android:paddingRight="20dp"
         android:paddingTop="10dp">
 
-        <ImageView
-            android:id="@+id/iv_item_columns"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"/>
-
         <TextView
-            android:id="@+id/tv_item_columns"
+            android:id="@+id/tv_item_columnpost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
             android:textColor="#333333"
             android:textSize="18sp"/>
 

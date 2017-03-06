@@ -17,6 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.dbmoment.columns.ColumnPostActivity"/>
+        <activity android:name=".ui.dbmoment.detail.MomentDetailActivity"/>
     </application>
 
 </manifest>

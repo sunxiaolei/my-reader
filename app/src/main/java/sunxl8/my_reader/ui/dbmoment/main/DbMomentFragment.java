@@ -1,17 +1,15 @@
-package sunxl8.my_reader.ui.main.dbmoment;
+package sunxl8.my_reader.ui.dbmoment.main;
 
-import android.provider.SyncStateContract;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import rx.Observable;
-import rx.functions.Action1;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseFragment;
+import sunxl8.my_reader.net.dbmoment.dto.ColumnBean;
 import sunxl8.my_reader.net.dbmoment.dto.ColumnsDto;
 
 /**
@@ -32,7 +30,7 @@ public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements
 
     @Override
     protected int setContentViewId() {
-        return R.layout.fragment_dbmoment;
+        return R.layout.fragment_moment;
     }
 
     @Override
@@ -47,8 +45,8 @@ public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements
 
     @Override
     public void setColumns(ColumnsDto columns) {
-        List<ColumnsDto.ColumnsBean> list = columns.getColumns();
-        mAdapter = new DbMomentAdapter(mActivity, list);
+        List<ColumnBean> list = columns.getColumns();
+        mAdapter = new DbMomentAdapter(this, list);
         Observable.from(list)
                 .subscribe(bean -> {
                     rvColumns.setAdapter(mAdapter);

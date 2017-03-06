@@ -5,4 +5,5 @@ package sunxl8.my_reader.base;
  */
 
 public interface IView {
+    void error(String msg);
 }

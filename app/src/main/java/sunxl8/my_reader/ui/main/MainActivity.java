@@ -14,7 +14,7 @@ import butterknife.BindView;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseActivity;
 import sunxl8.my_reader.base.IPresenter;
-import sunxl8.my_reader.ui.main.dbmoment.DbMomentFragment;
+import sunxl8.my_reader.ui.dbmoment.main.DbMomentFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -51,6 +51,11 @@ public class MainActivity extends BaseActivity {
         mViewPager.setOffscreenPageLimit(3);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    @Override
+    public void error(String msg) {
+
     }
 
     class MyPagerAdapter extends FragmentPagerAdapter {

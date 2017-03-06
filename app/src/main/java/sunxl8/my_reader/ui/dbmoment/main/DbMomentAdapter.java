@@ -1,21 +1,25 @@
-package sunxl8.my_reader.ui.main.dbmoment;
+package sunxl8.my_reader.ui.dbmoment.main;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.jakewharton.rxbinding.view.RxView;
+import com.trello.rxlifecycle.android.FragmentEvent;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import sunxl8.my_reader.R;
-import sunxl8.my_reader.net.dbmoment.dto.ColumnsDto;
+import sunxl8.my_reader.base.BaseFragment;
+import sunxl8.my_reader.net.dbmoment.dto.ColumnBean;
+import sunxl8.my_reader.ui.dbmoment.columns.ColumnPostActivity;
 
 /**
  * Created by sunxl8 on 2017/3/6.
@@ -23,25 +27,30 @@ import sunxl8.my_reader.net.dbmoment.dto.ColumnsDto;
 
 public class DbMomentAdapter extends RecyclerView.Adapter<DbMomentAdapter.ViewHolder> {
 
-    private Context mContext;
-    private List<ColumnsDto.ColumnsBean> mBeanList;
+    private BaseFragment mFragment;
+    private List<ColumnBean> mBeanList;
 
-    public DbMomentAdapter(Context context, List<ColumnsDto.ColumnsBean> beanList) {
-        mContext = context;
+    public DbMomentAdapter(BaseFragment fragment, List<ColumnBean> beanList) {
+        mFragment = fragment;
         mBeanList = beanList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder holder = new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_dbmoment, parent, false));
+        ViewHolder holder = new ViewHolder(LayoutInflater.from(mFragment.getContext()).inflate(R.layout.item_moment_dbmoment, parent, false));
         return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final ColumnsDto.ColumnsBean bean = mBeanList.get(position);
-        Glide.with(mContext).load(bean.getIcon()).into(holder.ivIcon);
+        final ColumnBean bean = mBeanList.get(position);
+        Glide.with(mFragment.getContext()).load(bean.getIcon()).into(holder.ivIcon);
         holder.tvTitle.setText(bean.getName());
+        RxView.clicks(holder.layoutItem)
+                .compose(mFragment.bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    ColumnPostActivity.startColumnPostActivity(mFragment.getContext(), bean.getId());
+                });
     }
 
     @Override
@@ -51,6 +60,8 @@ public class DbMomentAdapter extends RecyclerView.Adapter<DbMomentAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.layout_item_columns)
+        LinearLayout layoutItem;
         @BindView(R.id.iv_item_columns)
         ImageView ivIcon;
         @BindView(R.id.tv_item_columns)
