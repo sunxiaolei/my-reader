@@ -48,6 +48,21 @@ public class MaoyanMovieFragment extends BaseFragment<MaoyanMoviePresenter> impl
     @Override
     protected void initView() {
         xrvMain.setLayoutManager(new LinearLayoutManager(mActivity));
+        xrvMain.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                Map<String, String> params = new HashMap<>();
+                params.put("type", "hot");
+                params.put("offset", "0");
+                params.put("limit", "10");
+                mPresenter.getMainList(params);
+            }
+
+            @Override
+            public void onLoadMore() {
+
+            }
+        });
     }
 
     @Override
@@ -61,6 +76,7 @@ public class MaoyanMovieFragment extends BaseFragment<MaoyanMoviePresenter> impl
     @Override
     public void setMainList(MainListDto dto) {
         mActivity.dismissDialog();
+        xrvMain.refreshComplete();
         mAdapter = new MaoyanMovieAdapter(this, dto.getData().getMovies());
         xrvMain.setAdapter(mAdapter);
     }
