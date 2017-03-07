@@ -9,8 +9,8 @@ import butterknife.BindView;
 import rx.Observable;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseFragment;
-import sunxl8.my_reader.net.dbmoment.dto.ColumnBean;
-import sunxl8.my_reader.net.dbmoment.dto.ColumnsDto;
+import sunxl8.my_reader.net.doubanmoment.dto.ColumnBean;
+import sunxl8.my_reader.net.doubanmoment.dto.ColumnsDto;
 
 /**
  * Created by sunxl8 on 2017/3/6.

@@ -4,7 +4,7 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 
 import sunxl8.my_reader.base.BaseActivity;
 import sunxl8.my_reader.base.BasePresenter;
-import sunxl8.my_reader.net.dbmoment.DbMomentRequest;
+import sunxl8.my_reader.net.doubanmoment.DoubanMomentRequest;
 
 /**
  * Created by sunxl8 on 2017/3/6.
@@ -18,7 +18,7 @@ public class DbMomentPresenter extends BasePresenter<DbMomentContract.View> impl
 
     @Override
     public void getColumns() {
-        DbMomentRequest.getColumns()
+        DoubanMomentRequest.getColumns()
                 .compose(mActivity.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(dto -> {
                     mView.setColumns(dto);

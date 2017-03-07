@@ -1,18 +1,17 @@
-package sunxl8.my_reader.net.dbmoment;
+package sunxl8.my_reader.net.doubanmoment;
 
 import retrofit2.http.GET;
-import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
-import sunxl8.my_reader.net.dbmoment.dto.ColumnPostDto;
-import sunxl8.my_reader.net.dbmoment.dto.ColumnsDto;
+import sunxl8.my_reader.net.doubanmoment.dto.ColumnPostDto;
+import sunxl8.my_reader.net.doubanmoment.dto.ColumnsDto;
 
 /**
  * Created by sunxl8 on 2017/3/6.
  */
 
-public interface DbMomentApi {
+public interface DoubanMomentApi {
 
     /**
      * 栏目总览

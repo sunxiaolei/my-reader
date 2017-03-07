@@ -4,15 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.PointF;
 import android.net.Uri;
-import android.util.Log;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.ImageViewState;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
@@ -23,7 +18,7 @@ import butterknife.BindView;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseActivity;
 import sunxl8.my_reader.base.IPresenter;
-import sunxl8.my_reader.net.dbmoment.dto.PostsBean;
+import sunxl8.my_reader.net.doubanmoment.dto.PostsBean;
 
 /**
  * Created by sunxl8 on 2017/3/6.

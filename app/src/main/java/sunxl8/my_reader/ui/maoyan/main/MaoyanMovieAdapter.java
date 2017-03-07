@@ -42,6 +42,12 @@ public class MaoyanMovieAdapter extends RecyclerView.Adapter<MaoyanMovieAdapter.
         final MainListDto.DataBean.MoviesBean bean = mBeanList.get(position);
         Glide.with(mFragment.getActivity()).load(bean.getImg()).into(holder.ivItem);
         holder.tvTitle.setText(bean.getNm());
+        holder.tvDir.setText("导演：" + bean.getDir());
+        holder.tvActor.setText("主演：" + bean.getStar());
+        holder.tvScore.setText("评分：" + bean.getSc());
+        holder.tvShowDate.setText(bean.getRt());
+        holder.tvVer.setText(bean.getVer());
+        holder.tvShowInfo.setText(bean.getShowInfo());
     }
 
     @Override
@@ -57,6 +63,18 @@ public class MaoyanMovieAdapter extends RecyclerView.Adapter<MaoyanMovieAdapter.
         ImageView ivItem;
         @BindView(R.id.tv_maoyanmovie_main_title)
         TextView tvTitle;
+        @BindView(R.id.tv_maoyanmovie_main_dir)
+        TextView tvDir;
+        @BindView(R.id.tv_maoyanmovie_main_actor)
+        TextView tvActor;
+        @BindView(R.id.tv_maoyanmovie_main_score)
+        TextView tvScore;
+        @BindView(R.id.tv_maoyanmovie_main_showdate)
+        TextView tvShowDate;
+        @BindView(R.id.tv_maoyanmovie_main_ver)
+        TextView tvVer;
+        @BindView(R.id.tv_maoyanmovie_main_showinfo)
+        TextView tvShowInfo;
 
         public ViewHolder(View itemView) {
             super(itemView);

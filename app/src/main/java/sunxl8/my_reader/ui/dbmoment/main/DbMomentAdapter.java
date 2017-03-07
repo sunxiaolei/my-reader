@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseFragment;
-import sunxl8.my_reader.net.dbmoment.dto.ColumnBean;
+import sunxl8.my_reader.net.doubanmoment.dto.ColumnBean;
 import sunxl8.my_reader.ui.dbmoment.columns.ColumnPostActivity;
 
 /**

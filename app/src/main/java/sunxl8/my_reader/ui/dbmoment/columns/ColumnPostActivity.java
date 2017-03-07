@@ -9,7 +9,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import butterknife.BindView;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseActivity;
-import sunxl8.my_reader.net.dbmoment.dto.ColumnPostDto;
+import sunxl8.my_reader.net.doubanmoment.dto.ColumnPostDto;
 
 /**
  * Created by sunxl8 on 2017/3/6.

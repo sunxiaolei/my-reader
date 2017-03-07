@@ -2,11 +2,9 @@ package sunxl8.my_reader.ui.dbmoment.columns;
 
 import com.trello.rxlifecycle.android.ActivityEvent;
 
-import rx.functions.Action1;
 import sunxl8.my_reader.base.BaseActivity;
 import sunxl8.my_reader.base.BasePresenter;
-import sunxl8.my_reader.net.dbmoment.DbMomentRequest;
-import sunxl8.my_reader.net.dbmoment.dto.ColumnPostDto;
+import sunxl8.my_reader.net.doubanmoment.DoubanMomentRequest;
 
 /**
  * Created by sunxl8 on 2017/3/6.
@@ -20,7 +18,7 @@ public class ColumnPostPresenter extends BasePresenter<ColumnPostContract.View> 
 
     @Override
     public void getColumnPost(int id) {
-        DbMomentRequest.getColumnPost(id, 10)
+        DoubanMomentRequest.getColumnPost(id, 10)
                 .compose(mActivity.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe(dto -> {
                     mView.setColumnPost(dto);

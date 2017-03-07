@@ -16,7 +16,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import sunxl8.my_reader.R;
-import sunxl8.my_reader.net.dbmoment.dto.PostsBean;
+import sunxl8.my_reader.net.doubanmoment.dto.PostsBean;
 import sunxl8.my_reader.ui.dbmoment.detail.MomentDetailActivity;
 
 /**

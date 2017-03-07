@@ -1,4 +1,4 @@
-package sunxl8.my_reader.net.dbmoment.dto;
+package sunxl8.my_reader.net.doubanmoment.dto;
 
 import com.google.gson.annotations.SerializedName;
 
