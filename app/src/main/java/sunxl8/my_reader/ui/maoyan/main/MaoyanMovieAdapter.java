@@ -9,13 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.jakewharton.rxbinding.view.RxView;
+import com.trello.rxlifecycle.android.FragmentEvent;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.functions.Action1;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.net.maoyanmovie.dto.MainListDto;
+import sunxl8.my_reader.ui.maoyan.detail.MovieDetailActivity;
 
 /**
  * Created by sunxl8 on 2017/3/6.
@@ -48,6 +52,11 @@ public class MaoyanMovieAdapter extends RecyclerView.Adapter<MaoyanMovieAdapter.
         holder.tvShowDate.setText(bean.getRt());
         holder.tvVer.setText(bean.getVer());
         holder.tvShowInfo.setText(bean.getShowInfo());
+        RxView.clicks(holder.cvItem)
+                .compose(mFragment.bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    MovieDetailActivity.startMovieDetailActivity(mFragment.getContext(), bean.getId());
+                });
     }
 
     @Override
