@@ -22,14 +22,6 @@ public class MovieDetailActivity extends BaseActivity<MovieDetailPresenter> impl
 
     @BindView(R.id.iv_maoyanmovie_detail_poster)
     ImageView ivPoster;
-    @BindView(R.id.tv_maoyanmovie_detail_name)
-    TextView tvName;
-    @BindView(R.id.tv_maoyanmovie_detail_score)
-    TextView tvScore;
-    @BindView(R.id.tv_maoyanmovie_detail_showdate)
-    TextView tvShowDate;
-    @BindView(R.id.tv_maoyanmovie_detail_ver)
-    TextView tvVer;
     @BindView(R.id.tv_maoyanmovie_detail_dra)
     TextView tvDra;
 
@@ -72,10 +64,6 @@ public class MovieDetailActivity extends BaseActivity<MovieDetailPresenter> impl
         dismissDialog();
         MovieDetailModelBean detailBean = dto.getData().getMovieDetailModel();
         Glide.with(this).load(detailBean.getImg()).into(ivPoster);
-        tvName.setText(detailBean.getNm());
-        tvScore.setText(detailBean.getSc() + "");
-        tvShowDate.setText(detailBean.getRt());
-        tvVer.setText(detailBean.getVer());
         tvDra.setText(Html.fromHtml(dto.getData().getMovieDetailModel().getDra()));
     }
 }
