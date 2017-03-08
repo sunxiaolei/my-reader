@@ -6,6 +6,8 @@ import android.content.Context;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
+import sunxl8.myutils.Utils;
+
 /**
  * Created by sunxl8 on 2016/12/21.
  */
@@ -24,6 +26,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
+        Utils.init(this);
         Logger.init("my-reader")
                 .methodCount(3)
                 .hideThreadInfo()

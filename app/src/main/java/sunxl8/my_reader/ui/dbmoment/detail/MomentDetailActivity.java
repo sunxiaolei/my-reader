@@ -17,16 +17,13 @@ import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.ActivityEvent;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 import butterknife.BindView;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseActivity;
 import sunxl8.my_reader.base.IPresenter;
 import sunxl8.my_reader.net.doubanmoment.dto.PostsBean;
+import sunxl8.myutils.FileUtils;
 
 /**
  * Created by sunxl8 on 2017/3/6.
@@ -106,22 +103,11 @@ public class MomentDetailActivity extends BaseActivity {
     public void saveImage() {
         File file = new File(Environment.getExternalStorageDirectory(), "/MyReader/" + System.currentTimeMillis() + ".jpg");
         file.getParentFile().mkdirs();
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            FileInputStream fis = new FileInputStream(mFile);
-            byte[] buf = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = fis.read(buf)) > 0) {
-                fos.write(buf, 0, bytesRead);
-            }
-            fis.close();
-            fos.close();
+        boolean saveRes = FileUtils.copyFile(mFile, file);
+        if (saveRes) {
             showToast("保存成功");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } else {
+            showToast("保存失败");
         }
-
     }
 }
