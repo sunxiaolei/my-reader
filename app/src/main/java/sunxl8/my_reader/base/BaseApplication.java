@@ -3,6 +3,7 @@ package sunxl8.my_reader.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
@@ -32,6 +33,7 @@ public class BaseApplication extends Application {
                 .hideThreadInfo()
                 .logLevel(LogLevel.FULL)
                 .methodOffset(2);
+        Fresco.initialize(this);
         initActivityLifecycle();
         initDataBase();
     }

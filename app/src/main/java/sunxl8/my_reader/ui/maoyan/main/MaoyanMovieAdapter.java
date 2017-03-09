@@ -5,10 +5,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.FragmentEvent;
 
@@ -16,7 +15,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.functions.Action1;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.net.maoyanmovie.dto.MainListDto;
 import sunxl8.my_reader.ui.maoyan.detail.MovieDetailActivity;
@@ -44,7 +42,7 @@ public class MaoyanMovieAdapter extends RecyclerView.Adapter<MaoyanMovieAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final MainListDto.DataBean.MoviesBean bean = mBeanList.get(position);
-        Glide.with(mFragment.getActivity()).load(bean.getImg()).into(holder.ivItem);
+        holder.ivItem.setImageURI(bean.getImg());
         holder.tvTitle.setText(bean.getNm());
         holder.tvScore.setText(bean.getSc() + "");
         holder.tvShowInfo.setText(bean.getShowInfo());
@@ -65,7 +63,7 @@ public class MaoyanMovieAdapter extends RecyclerView.Adapter<MaoyanMovieAdapter.
         @BindView(R.id.cv_maoyanmovie_main_item)
         CardView cvItem;
         @BindView(R.id.iv_maoyanmovie_main_item)
-        ImageView ivItem;
+        SimpleDraweeView ivItem;
         @BindView(R.id.tv_maoyanmovie_main_title)
         TextView tvTitle;
         @BindView(R.id.tv_maoyanmovie_main_score)

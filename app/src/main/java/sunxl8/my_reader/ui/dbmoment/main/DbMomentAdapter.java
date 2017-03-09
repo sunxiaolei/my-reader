@@ -4,11 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.jakewharton.rxbinding.view.RxView;
 import com.trello.rxlifecycle.android.FragmentEvent;
 
@@ -44,7 +43,7 @@ public class DbMomentAdapter extends RecyclerView.Adapter<DbMomentAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final ColumnBean bean = mBeanList.get(position);
-        Glide.with(mFragment.getContext()).load(bean.getIcon()).into(holder.ivIcon);
+        holder.ivIcon.setImageURI(bean.getIcon());
         holder.tvTitle.setText(bean.getName());
         RxView.clicks(holder.layoutItem)
                 .compose(mFragment.bindUntilEvent(FragmentEvent.DESTROY))
@@ -63,7 +62,7 @@ public class DbMomentAdapter extends RecyclerView.Adapter<DbMomentAdapter.ViewHo
         @BindView(R.id.layout_item_columns)
         LinearLayout layoutItem;
         @BindView(R.id.iv_item_columns)
-        ImageView ivIcon;
+        SimpleDraweeView ivIcon;
         @BindView(R.id.tv_item_columns)
         TextView tvTitle;
 
