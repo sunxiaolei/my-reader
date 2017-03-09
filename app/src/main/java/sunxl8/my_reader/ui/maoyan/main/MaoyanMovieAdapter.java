@@ -1,5 +1,6 @@
 package sunxl8.my_reader.ui.maoyan.main;
 
+import android.graphics.PointF;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -42,6 +43,9 @@ public class MaoyanMovieAdapter extends RecyclerView.Adapter<MaoyanMovieAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final MainListDto.DataBean.MoviesBean bean = mBeanList.get(position);
+        holder.ivItem
+                .getHierarchy()
+                .setActualImageFocusPoint(new PointF(0.5f, 0.3f));
         holder.ivItem.setImageURI(bean.getImg());
         holder.tvTitle.setText(bean.getNm());
         holder.tvScore.setText(bean.getSc() + "");
