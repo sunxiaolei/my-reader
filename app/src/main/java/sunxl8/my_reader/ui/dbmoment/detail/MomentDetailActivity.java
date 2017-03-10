@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Environment;
+import android.view.View;
+import android.webkit.WebView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -19,6 +21,7 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 import java.io.File;
 
 import butterknife.BindView;
+import rx.functions.Action1;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseActivity;
 import sunxl8.my_reader.base.IPresenter;
@@ -31,11 +34,15 @@ import sunxl8.myutils.FileUtils;
 
 public class MomentDetailActivity extends BaseActivity {
 
-    @BindView(R.id.iv_test)
+    @BindView(R.id.web_moment_detail)
+    WebView mWebView;
+    @BindView(R.id.iv_moment_detail)
     SubsamplingScaleImageView mView;
 
     private PostsBean bean;
     private File mFile;
+
+    private boolean isWeb = true;
 
     @Override
     protected IPresenter createPresenter() {
@@ -51,27 +58,7 @@ public class MomentDetailActivity extends BaseActivity {
     protected void initData() {
         bean = (PostsBean) getIntent().getSerializableExtra("bean");
 
-        mView.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CUSTOM);
-        mView.setMinScale(1.0F);
-        mView.setMaxScale(5.0F);
-
-        showLoading();
-        Glide.with(this).load(bean.getShare_pic_url()).downloadOnly(new SimpleTarget<File>() {
-
-            @Override
-            public void onResourceReady(File resource, GlideAnimation<? super File> glideAnimation) {
-                dismissDialog();
-                mFile = resource;
-                mView.setImage(ImageSource.uri(Uri.fromFile(resource)), new ImageViewState(2.5F, new PointF(0, 0), 0));
-            }
-
-        });
-
-        RxView.longClicks(mView)
-                .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
-                .subscribe(aVoid -> {
-                    showMenuDialog();
-                });
+        mWebView.loadUrl(bean.getUrl());
     }
 
     private void showMenuDialog() {
@@ -86,7 +73,43 @@ public class MomentDetailActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        toolbarIcon.setVisibility(View.VISIBLE);
+        toolbarIcon.setImageResource(R.drawable.ic_change);
+        RxView.clicks(toolbarIcon)
+                .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    change();
+                });
+        mView.setMinimumScaleType(SubsamplingScaleImageView.SCALE_TYPE_CUSTOM);
+        mView.setMinScale(1.0F);
+        mView.setMaxScale(5.0F);
+        RxView.longClicks(mView)
+                .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    showMenuDialog();
+                });
+    }
 
+    private void change() {
+        if (isWeb) {
+            mWebView.setVisibility(View.GONE);
+            mView.setVisibility(View.VISIBLE);
+            showLoading();
+            Glide.with(this).load(bean.getShare_pic_url()).downloadOnly(new SimpleTarget<File>() {
+
+                @Override
+                public void onResourceReady(File resource, GlideAnimation<? super File> glideAnimation) {
+                    dismissDialog();
+                    mFile = resource;
+                    mView.setImage(ImageSource.uri(Uri.fromFile(resource)), new ImageViewState(2.5F, new PointF(0, 0), 0));
+                }
+
+            });
+        } else {
+            mWebView.setVisibility(View.VISIBLE);
+            mView.setVisibility(View.GONE);
+        }
+        isWeb = !isWeb;
     }
 
     @Override
