@@ -29,6 +29,12 @@ public class MovieDetailActivity extends BaseActivity<MovieDetailPresenter> impl
     TextView tvDir;
     @BindView(R.id.tv_maoyanmovie_detail_actor)
     TextView tvActor;
+    @BindView(R.id.tv_maoynmovie_detail_score)
+    TextView tvScore;
+    @BindView(R.id.tv_maoynmovie_detail_num)
+    TextView tvSum;
+    @BindView(R.id.tv_maoynmovie_detail_comment)
+    TextView tvComment;
 
     @Override
     protected MovieDetailPresenter createPresenter() {
@@ -74,5 +80,8 @@ public class MovieDetailActivity extends BaseActivity<MovieDetailPresenter> impl
         tvDir.setText("导演：" + detailBean.getDir());
         String[] actors = detailBean.getStar().split(" ");
         tvActor.setText("主演：" + actors[0] + " " + actors[1] + " " + actors[2]);
+        tvScore.setText(detailBean.getSc() + "");
+        tvSum.setText(detailBean.getSnum() + "");
+        tvComment.setText(dto.getData().getCommentResponseModel().getTotal() + "");
     }
 }
