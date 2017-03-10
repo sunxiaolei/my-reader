@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        toolbarTitle.setText("MyReader");
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mViewPager.setOffscreenPageLimit(3);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);

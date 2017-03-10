@@ -5,6 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include
+        layout="@layout/view_toolbar"/>
+
     <com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
         android:id="@+id/iv_test"
         android:layout_width="match_parent"

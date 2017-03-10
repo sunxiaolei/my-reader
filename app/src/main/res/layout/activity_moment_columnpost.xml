@@ -5,6 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include
+        layout="@layout/view_toolbar"/>
+
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/xrv_columnpost"
         android:layout_width="match_parent"

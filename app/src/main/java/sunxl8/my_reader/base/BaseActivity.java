@@ -7,14 +7,20 @@ import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import sunxl8.my_reader.R;
 import sunxl8.my_reader.widget.LoadingDialog;
 
 
@@ -30,6 +36,16 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
     private AlertDialog dialog;
     private LoadingDialog mLoadingDialog;
 
+    @Nullable
+    @BindView(R.id.toolbar)
+    protected Toolbar mToolbar;
+    @Nullable
+    @BindView(R.id.tv_toolbar_title)
+    protected TextView toolbarTitle;
+    @Nullable
+    @BindView(R.id.iv_toolbar_icon)
+    protected ImageView toolbarIcon;
+
     @Override
     @CallSuper
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,8 +57,22 @@ public abstract class BaseActivity<T extends IPresenter> extends RxAppCompatActi
         super.onCreate(savedInstanceState);
         setContentView(setContentViewId());
         mUnbinder = ButterKnife.bind(this);
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         initData();
         initView();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected abstract T createPresenter();
