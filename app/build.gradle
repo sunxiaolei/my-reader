@@ -66,7 +66,7 @@ dependencies {
     //长图
     compile 'com.davemorrissey.labs:subsampling-scale-image-view:3.6.0'
     //utils
-    compile 'com.github.sunxiaolei:my-utils:1.0.0'
+    compile 'com.github.sunxiaolei:my-utils:1.0.1'
     //fresco
     compile 'com.facebook.fresco:fresco:1.1.0'
 }

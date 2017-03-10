@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
 import android.widget.TextView;
+
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import butterknife.BindView;
@@ -22,6 +23,12 @@ public class MovieDetailActivity extends BaseActivity<MovieDetailPresenter> impl
     SimpleDraweeView ivPoster;
     @BindView(R.id.tv_maoyanmovie_detail_dra)
     TextView tvDra;
+    @BindView(R.id.tv_maoyanmovie_detail_name)
+    TextView tvName;
+    @BindView(R.id.tv_maoyanmovie_detail_dir)
+    TextView tvDir;
+    @BindView(R.id.tv_maoyanmovie_detail_actor)
+    TextView tvActor;
 
     @Override
     protected MovieDetailPresenter createPresenter() {
@@ -63,5 +70,9 @@ public class MovieDetailActivity extends BaseActivity<MovieDetailPresenter> impl
         MovieDetailModelBean detailBean = dto.getData().getMovieDetailModel();
         ivPoster.setImageURI(detailBean.getImg());
         tvDra.setText(Html.fromHtml(dto.getData().getMovieDetailModel().getDra()));
+        tvName.setText(detailBean.getNm());
+        tvDir.setText("导演：" + detailBean.getDir());
+        String[] actors = detailBean.getStar().split(" ");
+        tvActor.setText("主演：" + actors[0] + " " + actors[1] + " " + actors[2]);
     }
 }

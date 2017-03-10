@@ -28,7 +28,7 @@ public class MovieDetailModelBean {
      * sc : 8.9
      * scm : 狼叔最终战，不舍说再见
      * showSnum : true
-     * snum : 106327
+     * snum : 106327 评分人数
      * src : 美国
      * star : 休·杰克曼 帕特里克·斯图尔特 达芙妮·基恩 波伊德·霍布鲁克 斯戴芬·莫昌特 理查德·格兰特 艾瑞琪·拉·塞拉 伊莉丝·尼尔 伊丽莎白·罗德里格斯 劳伦·格罗斯 Quincy Fouse 多瑞丝·莫加多 Reynaldo Gallegos Kirk H. Andersen Christina M. Williams Ann Mckenzie John Raymond 汉娜·韦斯特菲尔德 辛西娅·勒布朗 Carlos Ramónne Graham David Melendez Sean Stevens Michael J. Bradford Ronald Joe Vasquez Tony Beard 杰伊·奥利弗 Julia Holt Dave Randolph-Mayhem Davis 马克·阿什沃斯 Frank Gallegos David Kallaway Al Coronel 詹姆斯·摩西·布莱克 汉·索托 William Schaff Erica Austin Diane Mozzone 泰德·弗格森 Ron M Patterson Anthony Escobar Artie Mozzone Eric Berris James Donald Chuck Newsom Gonzalo Robles Edgar Leza Sadarias Harrell 史蒂夫·基什 劳拉·格莱斯 Katie Anne Mitchell Mary Peyton Stewart 克里斯托弗·赫斯基 Damon Carney Saber Bankson Richard Beal Jon Arthur Edsel Pete Samantha Hopkins 伦尼洛·夫廷 Holly Bonney 克日什托夫·索斯亚斯基 Stephen Dunlevy 丹尼尔·伯恩哈特 Ryan Sturz Brandon Melendy Luke Hawx
      * vd : http://maoyan.meituan.net/movie/videos/854x480152636127edb4b8fa1880f801facab52.mp4
