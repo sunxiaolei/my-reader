@@ -22,6 +22,10 @@
         <activity android:name=".ui.dbmoment.columns.ColumnPostActivity"/>
         <activity android:name=".ui.dbmoment.detail.MomentDetailActivity"/>
         <activity android:name=".ui.maoyan.detail.MovieDetailActivity"/>
+
+        <meta-data
+            android:name="sunxl8.my_reader.utils.MyGlideModule"
+            android:value="GlideModule"/>
     </application>
 
 </manifest>
