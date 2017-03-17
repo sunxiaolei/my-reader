@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Headers;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -60,6 +61,16 @@ public class NetworkManager {
                 Request request = chain.request();
                 Logger.d("Request==>" + request.toString());
                 long t1 = System.nanoTime();
+                if (headers != null) {
+                    //可以添加公共参数
+//                    HttpUrl hu = request.url().newBuilder()
+//                            .addQueryParameter("", "")
+//                            .build();
+                    request.newBuilder()
+                            .headers(setHeaders(headers))
+                            .build();
+                }
+
                 Response response = chain.proceed(chain.request());
                 long t2 = System.nanoTime();
                 Logger.d(String.format(Locale.getDefault(), "Received response for %s in %.1fms%n%s%s",
@@ -67,16 +78,9 @@ public class NetworkManager {
                 okhttp3.MediaType mediaType = response.body().contentType();
                 String content = response.body().string();
                 Logger.d("Response==>" + content);
-                if (headers != null) {
-                    return response.newBuilder()
-                            .headers(setHeaders(headers))
-                            .body(okhttp3.ResponseBody.create(mediaType, content))
-                            .build();
-                } else {
-                    return response.newBuilder()
-                            .body(okhttp3.ResponseBody.create(mediaType, content))
-                            .build();
-                }
+                return response.newBuilder()
+                        .body(okhttp3.ResponseBody.create(mediaType, content))
+                        .build();
             }
         };
 
