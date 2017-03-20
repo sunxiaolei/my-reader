@@ -70,4 +70,6 @@ dependencies {
     compile 'com.github.sunxiaolei:my-utils:1.0.1'
     //fresco
     compile 'com.facebook.fresco:fresco:1.1.0'
+    //Bugly
+    compile 'com.tencent.bugly:crashreport:2.5.0'
 }

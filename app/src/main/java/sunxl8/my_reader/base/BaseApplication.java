@@ -6,6 +6,7 @@ import android.content.Context;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import sunxl8.myutils.Utils;
 
@@ -27,6 +28,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
+        CrashReport.initCrashReport(getApplicationContext(), "6894b38956", true);
         Utils.init(this);
         Logger.init("my-reader")
                 .methodCount(3)
