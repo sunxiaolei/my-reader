@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.jakewharton.butterknife'
 apply plugin: 'org.greenrobot.greendao'
+apply from: 'tinker-support.gradle'
 
 android {
     compileSdkVersion 25
@@ -84,4 +85,6 @@ dependencies {
     compile 'com.facebook.fresco:fresco:1.1.0'
     //Bugly
     compile 'com.tencent.bugly:crashreport_upgrade:1.2.4.0'
+    //MultiDex
+    compile "com.android.support:multidex:1.0.1"
 }
