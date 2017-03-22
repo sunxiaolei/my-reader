@@ -27,6 +27,10 @@
         <activity android:name=".ui.dbmoment.detail.MomentDetailActivity"/>
         <activity android:name=".ui.maoyan.detail.MovieDetailActivity"/>
 
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:theme="@android:style/Theme.Translucent" />
+
         <meta-data
             android:name="sunxl8.my_reader.utils.MyGlideModule"
             android:value="GlideModule"/>

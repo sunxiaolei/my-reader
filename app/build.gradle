@@ -11,13 +11,25 @@ android {
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file("myreader.jks")
+            storePassword "aaaaaa"
+            keyAlias "a"
+            keyPassword "aaaaaa"
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
         }
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
@@ -71,5 +83,5 @@ dependencies {
     //fresco
     compile 'com.facebook.fresco:fresco:1.1.0'
     //Bugly
-    compile 'com.tencent.bugly:crashreport:2.5.0'
+    compile 'com.tencent.bugly:crashreport_upgrade:1.2.4.0'
 }
