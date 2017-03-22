@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,8 @@ public class MainActivity extends BaseActivity {
         mViewPager.setOffscreenPageLimit(3);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         mTabLayout.setupWithViewPager(mViewPager);
+//        toolbarIcon.setVisibility(View.VISIBLE);
+//        toolbarIcon.setImageResource(R.drawable.ic_setting);
     }
 
     @Override
