@@ -1,5 +1,6 @@
 package sunxl8.my_reader.ui.dbmoment.main;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -18,6 +19,8 @@ import sunxl8.my_reader.net.doubanmoment.dto.ColumnsDto;
 
 public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements DbMomentContract.View {
 
+    @BindView(R.id.refresh_dbmoment)
+    SwipeRefreshLayout refreshLayout;
     @BindView(R.id.rv_dbmoment)
     RecyclerView rvColumns;
 
@@ -36,6 +39,10 @@ public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements
     @Override
     protected void initView() {
         rvColumns.setLayoutManager(new LinearLayoutManager(mActivity));
+        refreshLayout.setColorSchemeColors(mActivity.getResources().getColor(R.color.colorPrimary));
+        refreshLayout.setOnRefreshListener(() -> {
+            mPresenter.getColumns();
+        });
     }
 
     @Override
@@ -49,6 +56,7 @@ public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements
     @Override
     public void setColumns(ColumnsDto columns) {
         mActivity.dismissDialog();
+        refreshLayout.setRefreshing(false);
         List<ColumnBean> list = columns.getColumns();
         mAdapter = new DbMomentAdapter(this, list);
         Observable.from(list)
@@ -60,6 +68,7 @@ public class DbMomentFragment extends BaseFragment<DbMomentPresenter> implements
     @Override
     public void error(String msg) {
         mActivity.dismissDialog();
+        refreshLayout.setRefreshing(false);
         mActivity.showToast(msg);
     }
 }

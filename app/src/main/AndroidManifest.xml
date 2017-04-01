@@ -26,6 +26,7 @@
         <activity android:name=".ui.dbmoment.columns.ColumnPostActivity"/>
         <activity android:name=".ui.dbmoment.detail.MomentDetailActivity"/>
         <activity android:name=".ui.maoyan.detail.MovieDetailActivity"/>
+        <activity android:name=".ui.setting.SettingActivity"/>
 
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

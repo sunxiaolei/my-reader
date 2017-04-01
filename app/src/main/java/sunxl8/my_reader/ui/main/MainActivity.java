@@ -1,6 +1,7 @@
 package sunxl8.my_reader.ui.main;
 
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,15 +9,20 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
+import com.jakewharton.rxbinding.view.RxView;
+import com.trello.rxlifecycle.android.ActivityEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import rx.functions.Action1;
 import sunxl8.my_reader.R;
 import sunxl8.my_reader.base.BaseActivity;
 import sunxl8.my_reader.base.IPresenter;
 import sunxl8.my_reader.ui.dbmoment.main.DbMomentFragment;
 import sunxl8.my_reader.ui.maoyan.main.MaoyanMovieFragment;
+import sunxl8.my_reader.ui.setting.SettingActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -54,8 +60,13 @@ public class MainActivity extends BaseActivity {
         mViewPager.setOffscreenPageLimit(3);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         mTabLayout.setupWithViewPager(mViewPager);
-//        toolbarIcon.setVisibility(View.VISIBLE);
-//        toolbarIcon.setImageResource(R.drawable.ic_setting);
+        toolbarIcon.setVisibility(View.VISIBLE);
+        toolbarIcon.setImageResource(R.drawable.ic_setting);
+        RxView.clicks(toolbarIcon)
+                .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe(aVoid -> {
+                    startActivity(new Intent(this, SettingActivity.class));
+                });
     }
 
     @Override
